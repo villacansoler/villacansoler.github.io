@@ -1,0 +1,60 @@
+<html> 
+  <head>
+    <title>Can Soler</title> 
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon"  type="image/x-icon" href="{{ imgdir }}logo.png">
+
+    <style>
+      body {
+        font-family: 'Comfortaa'; font-size: 22px;
+      }
+    </style>
+  </head>
+
+  <body> 
+    <div id="header">
+      <div class="box">
+        <div class="box">
+          <div class="logo">
+            <h1><img src="{{ imgdir }}logo.png"/>  Can Soler</h1> 
+          </div>
+        </div>
+        <div>
+          <h2>Your home in Mallorca</h2> 
+        </div>
+      </div>
+    </div>
+
+    <section class="section bluebkg">
+      <div class="sectionbox">
+        <h2>The house</h2>
+
+        Hola, bon dia
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionbox">
+        <h2>Where to eat</h2>
+        <div class="list-container">
+          {% for restaurant in restaurants %}
+          <div class="list-item">
+            <div class="item-content">
+              <h3>{{ restaurant.name }}</h3>
+              <p>{{ restaurant.description }}</p>
+              <div class="item-links">
+                <a href="{{ restaurant.maps_link }}" target="_blank">{{ restaurant.address }}</a>
+                <a href="{{ restaurant.link }}" target="_blank"> Visit their website </a>
+              </div>
+            </div>
+            <div class="item-image">
+              <img src="{{ imgdir }}{{ restaurant.img }}" alt="{{ restaurant.name }}"/>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
