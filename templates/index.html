@@ -27,10 +27,37 @@
     </div>
 
     <section class="section bluebkg">
-      <div class="sectionbox">
+      <div class="sectionbox" id="thehouse">
         <h2>The house</h2>
 
-        Hola, bon dia
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+          <!-- Full-width images with number and caption text -->
+
+          {% for fotocasa in fotoscasa %}
+          <div class="mySlides fade">
+            <div class="numbertext">{{ loop.index }} / {{ fotoscasa | length }}</div>
+            <div class="sliderImage">
+              <img src="{{ imgdir }}{{ fotocasa.img }}" style="height:75%">
+            </div>
+            <div class="text">{{ fotocasa.description }}</div>
+          </div>
+          {% endfor %}
+
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+
+          {% for fotocasa in fotoscasa %}
+          <span class="dot" onclick="currentSlide({{ loop.index }})"></span>
+          {% endfor %}
+        </div>
       </div>
     </section>
 
@@ -57,4 +84,34 @@
       </div>
     </section>
   </body>
+
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
 </html>
