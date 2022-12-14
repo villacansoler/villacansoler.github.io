@@ -3,6 +3,8 @@
     <title>Can Soler</title> 
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     <link rel="stylesheet" href="styles.css">
+    <script src="cansoler.js"></script>
+
     <link rel="icon"  type="image/x-icon" href="img/logo.png">
 
     <style>
@@ -291,8 +293,60 @@
       </div>
     </section>
 
+    <section class="section" onsubmit="return false">
+      <div class="sectionbox" id="availability">
+        <h2>Availability and contact</h2>
+        <h3>Availability</h3>
+        <p>You can check the availability of the house in the following calendar. Each scheduled stay is represented by an event that starts at the checkin day and end the day before the checkout.</p>
+        <iframe src="https://calendar.google.com/calendar/embed?src=povm2urft1jgj4jak8mmbuhfp8%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        <h3>Prices and contact</h3>
+        The house is listed in <a href="https://www.airbnb.es/rooms/3623922" target="_blank">Airbnb</a> where you can check the prices for your stay. You can either book your stay there or directly contact us for a better deal.
+
+        <div id="contactForm">
+          <h3>Contact us</h3>
+          <form id="contactFormForm">
+            <div class="contactFormInput">
+              <label for="name">Name:</label><br>
+              <input type="text" id="name" name="name"><br>
+            </div>
+
+            <div class="contactFormInput">
+              <label for="checkin">Checkin:</label><br>
+              <input type="date" id="checking" name="checkin"><br>
+            </div>
+            <div class="contactFormInput">
+              <label for="checkout">Checkout:</label><br>
+              <input type="date" id="checkout" name="checkout"><br>
+            </div>
+            <div class="contactFormInput">
+              <label for="numguests">Number of guests:</label><br>
+              <select name="numguests">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select><br>
+            </div>
+            <div class="contactFormInput">
+              <label for="email">Your email <span class="req">*</span></label><br>
+              <input type="email" name="email"/><br>
+            </div>
+            <div class="contactFormInput">
+              <label for="message">Message:</label><br>
+              <textarea type="textarea" id="message" name="message" cols="50" rows="4"></textarea><br>
+            </div>
+            <input class="btn-submit" type="submit" value="Contact" onclick="processContactForm()"/>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
-      <div class="sectionbox">
+      <div class="sectionbox" id="places to eat">
         <h2>Where to eat</h2>
         <div class="list-container">
           

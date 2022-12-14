@@ -1,5 +1,6 @@
 imgdir: img/
 textwidth: 1000
+airbnblink: "https://www.airbnb.es/rooms/3623922"
 fotoscasa:
   - img: "casa/sala.webp"
     description: "Living room"

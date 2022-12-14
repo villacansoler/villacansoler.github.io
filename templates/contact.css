@@ -1,0 +1,35 @@
+#contactForm {
+    margin: 20px;
+    padding: 20px;
+    max-width: 400px;
+    border-style: solid;
+    border-color: var(--my-grey);
+}
+
+.contactFormInput {
+    padding: 10px;
+}
+
+select {
+    height: 40px;
+    width: 100px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+input {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+#message {
+    width: 100%;
+} 
+
+/* input[type=textarea] {
+    min-height: 3em;
+} */
+
