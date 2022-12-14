@@ -1,34 +1,39 @@
-#contactForm {
+#contact {
     margin: 20px;
-    padding: 20px;
-    max-width: 400px;
+    padding: 15px;
+    padding-left: 25px;
+    max-width: 500;
     border-style: solid;
     border-color: var(--my-grey);
+    border-radius: 0.1in;
+
 }
 
-.contactFormInput {
+#partners {
+    margin-bottom: 40px;
+}
+
+.contact-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    font-style: normal;
+    text-decoration: none;
+    color: black;
     padding: 10px;
 }
 
-select {
+.contact-link-text {
+    margin-left: 20px;
+}
+
+.partner-link {
+    margin-left: 20px;
+    padding: 20px;
+}
+
+.partner-logo {
     height: 40px;
-    width: 100px;
-    font-family: inherit;
-    font-size: inherit;
 }
-
-input {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    width: 100%;
-    font-size: inherit;
-    font-family: inherit;
-}
-
-#message {
-    width: 100%;
-} 
-
-/* input[type=textarea] {
-    min-height: 3em;
-} */
