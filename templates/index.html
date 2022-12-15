@@ -28,98 +28,124 @@
       </div>
     </div>
 
-    <section class="section">
-      <div class="sectionbox" id="thehouse">
-        <h2>The house</h2>
+    <div id="navbar">
+      <a href="#thehouse">The house</a>
+      <a href="#availability">Availability & contact</a>
+      <a href="#placestoeat">Places to eat</a>
+    </div>
 
-        <!-- Slideshow container -->
-        <div class="slideshow-container">
+    <div class="content">
+      <section class="section">
+        <div class="sectionbox" id="thehouse">
+          <h2>The house</h2>
 
-          <!-- Full-width images with number and caption text -->
+          <!-- Slideshow container -->
+          <div class="slideshow-container">
 
-          {% for fotocasa in fotoscasa %}
-          <div class="mySlides fade">
-            <div class="numbertext">{{ loop.index }} / {{ fotoscasa | length }}</div>
-            <div class="sliderImage">
-              <img src="{{ imgdir }}{{ fotocasa.img }}" style="height:75%">
+            <!-- Full-width images with number and caption text -->
+
+            {% for fotocasa in fotoscasa %}
+            <div class="mySlides fade">
+              <div class="numbertext">{{ loop.index }} / {{ fotoscasa | length }}</div>
+              <div class="sliderImage">
+                <img src="{{ imgdir }}{{ fotocasa.img }}" style="height:75%">
+              </div>
+              <div class="text">{{ fotocasa.description }}</div>
             </div>
-            <div class="text">{{ fotocasa.description }}</div>
+            {% endfor %}
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
           </div>
-          {% endfor %}
+          <br>
 
-          <!-- Next and previous buttons -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
+          <!-- The dots/circles -->
+          <div style="text-align:center">
 
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-
-          {% for fotocasa in fotoscasa %}
-          <span class="dot" onclick="currentSlide({{ loop.index }})"></span>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" onsubmit="return false">
-      <div class="sectionbox" id="availability">
-        <h2>Availability and contact</h2>
-        <h3>Availability</h3>
-        <p>You can check the availability of the house in the following calendar. Each scheduled stay is represented by an event that starts at the checkin day and end the day before the checkout.</p>
-        <iframe src="https://calendar.google.com/calendar/embed?src=povm2urft1jgj4jak8mmbuhfp8%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        <h3>Prices and contact</h3>
-        The house is listed in <a href="{{ airbnblink }}" target="_blank">Airbnb</a> where you can check the prices for your stay. You can either book your stay there or <b>directly contact us for a better deal</b>.
-
-        <div id="contact-container">
-          <div id="contact">
-            <h3>Contact us</h3>
-            <a href="tel:+34654425397" class="contact-link" target="_blank">
-              <img src="https://uploads-ssl.webflow.com/5ff2cc82fc65c23e153d31a4/5ff2cc83c33d4999ec764a50_phone_icon.svg" loading="lazy" alt="Icono del teléfono" class="footer-contact-icon">
-              <div class="contact-link-text">+34 654 42 53 97</div>
-            </a>
-            <a href="mailto:hola@villacansoler.com?subject=Stay in Can Soler&body=Hello! I'm interested in Can Soler from the {my checkin day} to {my checkout day}" class="contact-link" target="_blank">
-              <img src="https://uploads-ssl.webflow.com/5ff2cc82fc65c23e153d31a4/5ff2cc83c33d497ae8764a51_mail_icon.svg" loading="lazy" alt="" class="footer-contact-icon">
-              <div class="contact-link-text">hola@villacansoler.com</div>
-            </a>
-          </div>
-          <div id="partners">
-            <h4>You can find the house listed here</h4>
-            <a href="{{ airbnblink }}" class="partner-link" target="_blank">
-              <img src="{{ imgdir }}/airbnb_logo.png" class="partner-logo"> 
-            </a>
+            {% for fotocasa in fotoscasa %}
+            <span class="dot" onclick="currentSlide({{ loop.index }})"></span>
+            {% endfor %}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="sectionbox" id="places to eat">
-        <h2>Where to eat</h2>
-        <div class="list-container">
-          {% for restaurant in restaurants %}
-          <div class="list-item">
-            <div class="item-content">
-              <h3>{{ restaurant.name }}</h3>
-              <p>{{ restaurant.description }}</p>
-              <div class="item-links">
-                <a href="{{ restaurant.maps_link }}" target="_blank">{{ restaurant.address }}</a>
-                <a href="{{ restaurant.link }}" target="_blank"> Visit their website </a>
+      <section class="section" onsubmit="return false">
+        <div class="sectionbox" id="availability">
+          <h2>Availability and contact</h2>
+          <h3>Availability</h3>
+          <p>You can check the availability of the house in the following calendar. Each scheduled stay is represented by an event that starts at the checkin day and end the day before the checkout.</p>
+          <iframe src="https://calendar.google.com/calendar/embed?src=povm2urft1jgj4jak8mmbuhfp8%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+          <h3>Prices and contact</h3>
+          The house is listed in <a href="{{ airbnblink }}" target="_blank">Airbnb</a> where you can check the prices for your stay. You can either book your stay there or <b>directly contact us for a better deal</b>.
+
+          <div id="contact-container">
+            <div id="contact">
+              <h3>Contact us</h3>
+              <a href="tel:+34654425397" class="contact-link" target="_blank">
+                <img src="https://uploads-ssl.webflow.com/5ff2cc82fc65c23e153d31a4/5ff2cc83c33d4999ec764a50_phone_icon.svg" loading="lazy" alt="Icono del teléfono" class="footer-contact-icon">
+                <div class="contact-link-text">+34 654 42 53 97</div>
+              </a>
+              <a href="mailto:hola@villacansoler.com?subject=Stay in Can Soler&body=Hello! I'm interested in Can Soler from the {my checkin day} to {my checkout day}" class="contact-link" target="_blank">
+                <img src="https://uploads-ssl.webflow.com/5ff2cc82fc65c23e153d31a4/5ff2cc83c33d497ae8764a51_mail_icon.svg" loading="lazy" alt="" class="footer-contact-icon">
+                <div class="contact-link-text">hola@villacansoler.com</div>
+              </a>
+            </div>
+            <div id="partners">
+              <h4>You can find the house listed here</h4>
+              <a href="{{ airbnblink }}" class="partner-link" target="_blank">
+                <img src="{{ imgdir }}/airbnb_logo.png" class="partner-logo"> 
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionbox" id="placestoeat">
+          <h2>Where to eat</h2>
+          <div class="list-container">
+            {% for restaurant in restaurants %}
+            <div class="list-item">
+              <div class="item-content">
+                <h3>{{ restaurant.name }}</h3>
+                <p>{{ restaurant.description }}</p>
+                <div class="item-links">
+                  <a href="{{ restaurant.maps_link }}" target="_blank">{{ restaurant.address }}</a>
+                  <a href="{{ restaurant.link }}" target="_blank"> Visit their website </a>
+                </div>
+              </div>
+              <div class="item-image">
+                <img src="{{ imgdir }}{{ restaurant.img }}" alt="{{ restaurant.name }}"/>
               </div>
             </div>
-            <div class="item-image">
-              <img src="{{ imgdir }}{{ restaurant.img }}" alt="{{ restaurant.name }}"/>
-            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </body>
 
 
 <script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
 let slideIndex = 1;
 showSlides(slideIndex);
 
