@@ -31,6 +31,7 @@
     <div id="navbar">
       <a href="#thehouse">The house</a>
       <a href="#availability">Availability & contact</a>
+      <a href="#poi">Points of interest</a>
       <a href="#placestoeat">Places to eat</a>
     </div>
 
@@ -102,17 +103,28 @@
       </section>
 
       <section class="section">
+        <div class="sectionbox" id="poi">
+          <h2>Points of interest</h2>
+            You can see some points of interest in the following map
+            <div class="poicontainer">
+              <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1M0rCjXmTcsLRHPV8pfy53Fa6WPN4L4M&ehbc=2E312F" height="100%" width="100%"></iframe>
+            </div>
+        </div>
+      </section>
+
+      <section class="section">
         <div class="sectionbox" id="placestoeat">
           <h2>Where to eat</h2>
           <div class="list-container">
             {% for restaurant in restaurants %}
             <div class="list-item">
               <div class="item-content">
-                <h3>{{ restaurant.name }}</h3>
-                <p>{{ restaurant.description }}</p>
+                <a href="{{ restaurant.link }}" target="_blank" class="restaurant-card">
+                  <h3>{{ restaurant.name }}</h3>
+                  <p>{{ restaurant.description }}</p>
+                </a>
                 <div class="item-links">
                   <a href="{{ restaurant.maps_link }}" target="_blank">{{ restaurant.address }}</a>
-                  <a href="{{ restaurant.link }}" target="_blank"> Visit their website </a>
                 </div>
               </div>
               <div class="item-image">
@@ -123,6 +135,7 @@
           </div>
         </div>
       </section>
+      
     </div>
   </body>
 

@@ -111,6 +111,17 @@ img {
     font-style: italic;
 }
 
+.poicontainer {
+  margin-top: 60px;
+  width: 100%;
+  min-height: 600px;
+}
+
+.restaurant-card {
+  text-decoration: none;
+  color: black;
+}
+
 
 * {box-sizing:border-box}
 
