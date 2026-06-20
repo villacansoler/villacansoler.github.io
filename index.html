@@ -113,22 +113,62 @@
           <h2>Make it<br><em>yours</em></h2>
           <p>Check the calendar for available dates. For the best rate, book directly with us — we will be happy to help you plan your stay.</p>
           <div class="stay-actions">
-            <button class="button button-sun" type="button" data-calendar-toggle>Check availability</button>
+            <a class="button button-sun" href="#availability">Check availability</a>
             <a class="text-link light" href="#contact">Contact us <span>↘</span></a>
           </div>
         </div>
       </section>
 
-      <section class="calendar-panel" id="availability" hidden>
+      <section class="calendar-panel" id="availability">
         <div class="section-shell">
           <div class="calendar-heading">
             <div>
-              <p class="eyebrow">Availability</p>
-              <h2>Choose your <em>dates</em></h2>
+              <p class="eyebrow">Plan your stay</p>
+              <h2>Find your <em>dates</em></h2>
             </div>
-            <button type="button" class="close-calendar" data-calendar-toggle aria-label="Close calendar">×</button>
+            <p>Booked stays appear on the calendar below. Select a month to explore availability, then send us your preferred check-in and check-out dates.</p>
           </div>
-          <iframe title="Can Soler availability calendar" src="https://calendar.google.com/calendar/embed?src=povm2urft1jgj4jak8mmbuhfp8%40group.calendar.google.com&ctz=Europe%2FMadrid" loading="lazy"></iframe>
+          <div class="availability-layout">
+            <div class="calendar-card">
+              <div class="calendar-card-header">
+                <div>
+                  <span class="status-dot"></span>
+                  Live availability
+                </div>
+                <div class="calendar-controls">
+                  <button type="button" data-calendar-prev aria-label="Previous month">←</button>
+                  <button type="button" data-calendar-today>Today</button>
+                  <button type="button" data-calendar-next aria-label="Next month">→</button>
+                </div>
+              </div>
+              <div class="calendar-loading" data-calendar-loading>
+                <span></span>
+                Loading live availability…
+              </div>
+              <div class="custom-calendar" data-calendar aria-live="polite"></div>
+              <div class="calendar-error" data-calendar-error hidden>
+                <p>We could not load live availability just now.</p>
+                <a href="mailto:hola@villacansoler.com?subject=Availability%20at%20Can%20Soler">Ask us about your dates</a>
+              </div>
+              <div class="calendar-legend">
+                <span><i class="legend-available"></i> Available</span>
+                <span><i class="legend-booked"></i> Booked</span>
+                <span><i class="legend-past"></i> Past date</span>
+              </div>
+            </div>
+            <aside class="availability-info">
+              <span class="availability-step">01</span>
+              <h3>Choose your dates</h3>
+              <p>Terracotta ranges are existing stays. Each continuous band runs from check-in through the night before check-out.</p>
+
+              <span class="availability-step">02</span>
+              <h3>Ask for our best rate</h3>
+              <p>Send us your dates directly for a personal reply and our best available price.</p>
+
+              <a class="button button-dark" href="mailto:hola@villacansoler.com?subject=Availability%20at%20Can%20Soler&amp;body=Hello!%20I%27m%20interested%20in%20staying%20at%20Can%20Soler%20from%20%5Bcheck-in%20date%5D%20to%20%5Bcheck-out%20date%5D.">Enquire about dates</a>
+              <a class="availability-phone" href="tel:+34654425397">Or call +34 654 42 53 97</a>
+            </aside>
+          </div>
         </div>
       </section>
 
