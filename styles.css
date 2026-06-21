@@ -745,32 +745,42 @@ h2 {
   background: var(--terracotta);
 }
 
-.calendar-day.is-booking-start::before {
-  left: 5px;
-  border-radius: 100px 0 0 100px;
+.calendar-day.is-arrival:not(.is-turnover) {
+  color: var(--ink);
 }
 
-.calendar-day.is-booking-end::before {
-  right: 5px;
-  border-radius: 0 100px 100px 0;
+.calendar-day.is-arrival:not(.is-turnover)::before {
+  background: linear-gradient(to bottom right, transparent 49%, var(--terracotta) 50%);
 }
 
-.calendar-day.is-booking-start.is-booking-end::before {
-  border-radius: 100px;
+.calendar-day.is-departure:not(.is-turnover) {
+  color: var(--ink);
 }
 
-.calendar-day.is-week-start.is-booked::before {
-  left: 5px;
-  border-radius: 100px 0 0 100px;
+.calendar-day.is-departure:not(.is-turnover)::before {
+  background: linear-gradient(to bottom right, var(--terracotta) 49%, transparent 50%);
 }
 
-.calendar-day.is-week-end.is-booked::before {
-  right: 5px;
-  border-radius: 0 100px 100px 0;
+.calendar-day.is-arrival:not(.is-turnover) > span,
+.calendar-day.is-departure:not(.is-turnover) > span {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, .9);
 }
 
-.calendar-day.is-week-start.is-week-end.is-booked::before {
-  border-radius: 100px;
+.calendar-day.is-turnover {
+  color: white;
+}
+
+.calendar-day.is-turnover::before {
+  background:
+    linear-gradient(to bottom right,
+      var(--terracotta) 0 47%,
+      rgba(255, 253, 248, .9) 48% 52%,
+      var(--terracotta) 53% 100%);
 }
 
 .calendar-legend {
@@ -803,6 +813,14 @@ h2 {
 .calendar-legend .legend-booked {
   border-color: var(--terracotta);
   background: var(--terracotta);
+}
+
+.calendar-legend .legend-arrival {
+  background: linear-gradient(to bottom right, transparent 49%, var(--terracotta) 50%);
+}
+
+.calendar-legend .legend-departure {
+  background: linear-gradient(to bottom right, var(--terracotta) 49%, transparent 50%);
 }
 
 .calendar-legend .legend-past {

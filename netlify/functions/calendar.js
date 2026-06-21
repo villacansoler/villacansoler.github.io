@@ -20,7 +20,9 @@ const parseDate = (line) => {
 
 const parseCalendar = (ical) => {
   const unavailableDates = new Set();
+  const stays = [];
   let event = null;
+  const today = toDateKey(new Date());
 
   for (const line of unfoldLines(ical)) {
     if (line === "BEGIN:VEVENT") {
@@ -30,6 +32,10 @@ const parseCalendar = (ical) => {
 
     if (line === "END:VEVENT") {
       if (event?.start && event?.end) {
+        const stay = {
+          startDate: toDateKey(event.start),
+          endDate: toDateKey(event.end),
+        };
         const cursor = new Date(event.start);
 
         // iCal DTEND is exclusive: every night from check-in through the
@@ -38,6 +44,8 @@ const parseCalendar = (ical) => {
           unavailableDates.add(toDateKey(cursor));
           cursor.setUTCDate(cursor.getUTCDate() + 1);
         }
+
+        if (stay.endDate >= today) stays.push(stay);
       }
 
       event = null;
@@ -49,11 +57,12 @@ const parseCalendar = (ical) => {
     if (line.startsWith("DTEND")) event.end = parseDate(line);
   }
 
-  const today = toDateKey(new Date());
-
-  return Array.from(unavailableDates)
-    .filter((date) => date >= today)
-    .sort();
+  return {
+    unavailableDates: Array.from(unavailableDates)
+      .filter((date) => date >= today)
+      .sort(),
+    stays: stays.sort((first, second) => first.startDate.localeCompare(second.startDate)),
+  };
 };
 
 exports.handler = async () => {
@@ -71,6 +80,8 @@ exports.handler = async () => {
       throw new Error("Google Calendar response was not valid iCal data");
     }
 
+    const calendar = parseCalendar(ical);
+
     return {
       statusCode: 200,
       headers: {
@@ -78,7 +89,7 @@ exports.handler = async () => {
         "content-type": "application/json; charset=utf-8",
       },
       body: JSON.stringify({
-        unavailableDates: parseCalendar(ical),
+        ...calendar,
         updatedAt: new Date().toISOString(),
       }),
     };

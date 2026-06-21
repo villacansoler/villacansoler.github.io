@@ -8,6 +8,7 @@ const calendarError = document.querySelector("[data-calendar-error]");
 const calendarWeekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 let calendarCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let unavailableDates = new Set();
+let stays = [];
 
 const updateHeader = () => {
   header.classList.toggle("scrolled", window.scrollY > 30);
@@ -95,23 +96,32 @@ const renderMonth = (monthDate) => {
   for (let index = 0; index < 42; index += 1) {
     const date = addDays(gridStart, index);
     const key = dateKey(date);
-    const previousBooked = unavailableDates.has(dateKey(addDays(date, -1)));
-    const nextBooked = unavailableDates.has(dateKey(addDays(date, 1)));
-    const booked = unavailableDates.has(key);
+    const isArrival = stays.some((stay) => stay.startDate === key);
+    const isDeparture = stays.some((stay) => stay.endDate === key);
+    const isStayNight = stays.some((stay) => key > stay.startDate && key < stay.endDate);
+    const isTurnover = isArrival && isDeparture;
     const day = document.createElement("div");
     const classes = ["calendar-day"];
 
     if (date.getMonth() !== month) classes.push("is-outside");
     if (date < today) classes.push("is-past");
     if (isSameDay(date, today)) classes.push("is-today");
-    if (booked) classes.push("is-booked");
-    if (booked && !previousBooked) classes.push("is-booking-start");
-    if (booked && !nextBooked) classes.push("is-booking-end");
-    if (index % 7 === 0) classes.push("is-week-start");
-    if (index % 7 === 6) classes.push("is-week-end");
+    if (isStayNight) classes.push("is-booked");
+    if (isArrival) classes.push("is-arrival");
+    if (isDeparture) classes.push("is-departure");
+    if (isTurnover) classes.push("is-turnover");
 
     day.className = classes.join(" ");
-    day.setAttribute("aria-label", `${date.toLocaleDateString("en-GB")}: ${booked ? "booked" : "available"}`);
+    const availability = isTurnover
+      ? "departure and new arrival"
+      : isArrival
+        ? "arrival day, available until check-in"
+        : isDeparture
+          ? "departure day, available after check-out"
+          : isStayNight
+            ? "booked"
+            : "available";
+    day.setAttribute("aria-label", `${date.toLocaleDateString("en-GB")}: ${availability}`);
 
     const number = document.createElement("span");
     number.textContent = String(date.getDate());
@@ -152,9 +162,12 @@ const loadAvailability = async () => {
     if (!response.ok) throw new Error(`Calendar request failed: ${response.status}`);
 
     const data = await response.json();
-    if (!Array.isArray(data.unavailableDates)) throw new Error("Malformed calendar response");
+    if (!Array.isArray(data.unavailableDates) || !Array.isArray(data.stays)) {
+      throw new Error("Malformed calendar response");
+    }
 
     unavailableDates = new Set(data.unavailableDates);
+    stays = data.stays;
     renderCalendar();
     calendarLoading.hidden = true;
   } catch (error) {
