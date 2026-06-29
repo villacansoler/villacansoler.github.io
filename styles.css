@@ -259,27 +259,27 @@ h2 {
 }
 
 .site-header:not(.scrolled) .brand-name {
-  text-shadow: 0 2px 18px rgba(0, 0, 0, .38);
+  text-shadow: 0 1px 10px rgba(48, 36, 24, .28);
 }
 
 .site-header:not(.scrolled) .main-nav {
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, .24);
+  border: 1px solid rgba(255, 253, 248, .52);
   border-radius: 999px;
-  background: rgba(24, 31, 25, .36);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, .14);
-  backdrop-filter: blur(14px) saturate(125%);
+  background: rgba(255, 253, 248, .82);
+  backdrop-filter: blur(10px) saturate(112%);
 }
 
 .site-header:not(.scrolled) .main-nav a:not(.nav-cta) {
+  color: var(--ink);
   padding: 8px 0;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, .42);
+  text-shadow: none;
 }
 
 .site-header:not(.scrolled) .nav-cta {
-  border-color: rgba(255, 255, 255, .72);
-  background: rgba(255, 255, 255, .1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+  color: white;
+  border-color: var(--terracotta);
+  background: var(--terracotta);
 }
 
 .scrolled .nav-cta {
@@ -1350,11 +1350,11 @@ footer small {
   }
 
   .site-header:not(.scrolled) .menu-toggle {
-    border: 1px solid rgba(255, 255, 255, .24);
+    border: 1px solid rgba(255, 253, 248, .52);
     border-radius: 50%;
-    background: rgba(24, 31, 25, .36);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .16);
-    backdrop-filter: blur(12px) saturate(125%);
+    color: var(--ink);
+    background: rgba(255, 253, 248, .82);
+    backdrop-filter: blur(10px) saturate(112%);
   }
 
   .menu-open .menu-toggle {
