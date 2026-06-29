@@ -263,7 +263,7 @@ h2 {
 }
 
 .site-header:not(.scrolled) .main-nav {
-  padding: 8px;
+  padding: 8px 10px 8px 20px;
   border: 1px solid rgba(255, 253, 248, .52);
   border-radius: 999px;
   background: rgba(255, 253, 248, .82);
@@ -272,7 +272,7 @@ h2 {
 
 .site-header:not(.scrolled) .main-nav a:not(.nav-cta) {
   color: var(--ink);
-  padding: 8px 0;
+  padding: 8px 2px;
   text-shadow: none;
 }
 
